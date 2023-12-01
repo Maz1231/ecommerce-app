@@ -16,7 +16,13 @@ export function Providers({ children }: Props) {
   currency="USD"
   shouldPersist
   cartMode="checkout-session"
-  stripe=""
-  >{children}</CartProvider>
+  stripe={process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!}
+  >
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <Toaster />
+      {children}
+      <TailwindIndicator />
+    </ThemeProvider>
+  </CartProvider>
 
 }
